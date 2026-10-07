@@ -1,0 +1,42 @@
+# Python and build outputs
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv*/
+venv/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage*
+htmlcov/
+.ipynb_checkpoints/
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+kaggle.json
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Downloaded data, model weights, and generated runs
+/data/
+/datasets/*
+!/datasets/manifests/
+/artifacts/
+/models/
+/runs/
+*.pt
+*.pth
+*.onnx
+*.safetensors
+*.mp4
+*.avi
+*.mov
+*.mkv
