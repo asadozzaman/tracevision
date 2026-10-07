@@ -1,0 +1,81 @@
+{
+  "basis_commit": "1efe4b52c0515c2a9db87a7574b0da4111f1c7b6",
+  "blockers": [
+    "No actual road media plus identity ground truth acquired and validated",
+    "No accepted real subset, frozen selection, or real file manifest",
+    "TrafficMOT dataset license unresolved",
+    "TUMTraf-A page/paper inventory discrepancy unresolved"
+  ],
+  "commands": [
+    "python -m build",
+    "python -m pip install --no-deps dist/tracevision-0.1.0.dev0-py3-none-any.whl",
+    "python -m pip check",
+    "python -m unittest discover -s tests -v",
+    "python -m compileall -q src tests",
+    "git diff --check"
+  ],
+  "dataset_accepted": false,
+  "environment": {
+    "architecture": "x86_64",
+    "build_frontend": "build==1.3.0",
+    "gpu_used": false,
+    "isolated_build_backend": "setuptools==80.9.0",
+    "kaggle_compute_used": false,
+    "os": "Linux",
+    "python": "3.12.14",
+    "runtime_dependencies": []
+  },
+  "local_validation": {
+    "compileall": "passed",
+    "errors": 0,
+    "failures": 0,
+    "git_diff_check": "passed",
+    "installed_wheel_tested": true,
+    "pip_check_clean_venv": "passed",
+    "skipped": 0,
+    "source_distribution_and_wheel_build": "passed",
+    "tests_run": 20
+  },
+  "model_experiments_run": false,
+  "phase1_complete": false,
+  "real_subset_frozen": false,
+  "recorded_at": "2026-10-07T17:41:32.055299+00:00",
+  "schema_version": 1,
+  "scope": "Software validation and public release metadata only; not an empirical road-video evaluation",
+  "svmot_metadata": {
+    "archive_downloaded": false,
+    "license_id": "cc-by-nc-4.0",
+    "media_or_ground_truth_inspected": false,
+    "official_record": "https://zenodo.org/records/19468203",
+    "record_api": "https://zenodo.org/api/records/19468203",
+    "verified_release_files": [
+      {
+        "matches_author_sha256sums": true,
+        "path": "train.txt",
+        "sha256": "45afa8d7e35e0940577ae1bcb5dc39aa0958336cf50113b312631a259f4b6a7a",
+        "size_bytes": 314
+      },
+      {
+        "matches_author_sha256sums": true,
+        "path": "test.txt",
+        "sha256": "33d6c6aa614e58965bf1a7c705feea32f9b131a35f6bfd6247a36bb1a812ac81",
+        "size_bytes": 135
+      },
+      {
+        "matches_author_sha256sums": true,
+        "path": "by_scene.json",
+        "sha256": "6d4f00b86b534dcac1f074cc4656f4f12ecd14fac2f56a1f29bff3a3b371efeb",
+        "size_bytes": 1270
+      }
+    ],
+    "version": "v1.0"
+  },
+  "tested_source_files": {
+    ".github/workflows/ci.yml": "530bf6ecbb2b0fca3be9298d44069c78e8a53bfc17c01affb8871e7572806f58",
+    "pyproject.toml": "a9676c4fc5eb3af17f1f07dc2ac8d2843268d152441324552fdb094d46b91cb3",
+    "src/tracevision/cli.py": "dd455aec0eb440ed4e9b5bf0a001280c8aff1a3ec22cad1d539bd0d338ca561f",
+    "src/tracevision/data.py": "f235cab0c7e4eef950dfb0bb667e8254c9a82b1433de3a6558938fb3be59f667",
+    "tests/test_cli.py": "9df1aa5e179096bcb5fbc28b8534461e0087a85dbccfa0a5caf22ec75ceaea3b",
+    "tests/test_data.py": "9296d24abebcc9ebe7afb3aa0f1785b5654b880dfe2945e1c2a4708e48c6edb3"
+  }
+}

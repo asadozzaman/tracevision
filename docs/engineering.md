@@ -9,11 +9,14 @@ backend and direct development tool are pinned in `pyproject.toml`. Transitive
 tool dependencies are not locked, so this is not a claim of bit-for-bit builds.
 The distribution metadata is the single source of the package version.
 
-The initial CLI provides only help and version information. Standard-library
+The foundation CLI initially provided only help and version information. Standard-library
 `unittest` checks installed module and console entry points, help, and rejection
 of unsupported commands. CI builds a source distribution and a wheel from it,
 installs the wheel, and runs those checks on Windows and Linux. CI does not
-require accelerators or download models or datasets.
+require accelerators or download models or datasets. Phase 1 preparation adds
+standard-library selection/file-integrity commands and CPU tests. It does not
+yet include a dataset-specific adapter or an accepted real subset. See the
+[implemented contract and its limits](data-preparation.md).
 
 MIT applies to original project source. Dependency code, model weights, and
 datasets need separate license and compatibility review before integration.

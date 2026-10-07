@@ -44,7 +44,7 @@ class CLITests(unittest.TestCase):
     def test_unimplemented_command_fails(self) -> None:
         result = self.run_cli("benchmark")
         self.assertEqual(result.returncode, 2)
-        self.assertIn("unrecognized arguments", result.stderr)
+        self.assertIn("invalid choice", result.stderr)
 
 
 if __name__ == "__main__":

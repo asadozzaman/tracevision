@@ -1,8 +1,10 @@
 # Dataset and benchmark policy
 
-No datasets or model weights have been selected or downloaded. No experiments
-have run. This document defines acceptance criteria for future work, not
-benchmark results or an implemented artifact schema.
+No dataset or model weights have been accepted. Public SVMOT release metadata
+was retrieved, but no road media or object ground truth has been validated.
+No model experiments have run. This document defines acceptance criteria;
+[local integrity preparation](data-preparation.md) implements only the
+selection/file-manifest schema, not benchmark run artifacts.
 
 ## Dataset selection and provenance
 
@@ -23,8 +25,9 @@ Before accepting a dataset, record:
 - Reproducible preparation commands and a manifest with relative paths,
   file sizes, SHA-256 checksums, and annotation/source version identifiers.
 
-Compare BDD100K with suitable established road-scene alternatives using these
-criteria. Assess a separate identity-annotated MOT benchmark only where it
+Compare recent and established road-scene alternatives using these criteria;
+see the [current comparison](data-selection.md). Assess a separate
+identity-annotated MOT benchmark only where it
 answers a defined tracking question. Pedestrian or non-road results must not be
 generalized to road traffic without supporting evaluation.
 

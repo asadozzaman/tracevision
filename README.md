@@ -5,12 +5,25 @@ an emphasis on reproducible evaluation and inspectable tracking failures.
 
 ## Current state
 
-**Implemented:** an installable Python package, version/help commands, package
-smoke tests, and CPU-only CI configuration for Windows and Linux.
+**Phase 0 complete. Phase 1 preparation implemented; dataset acceptance blocked.**
 
-**Not implemented:** dataset preparation, inference, tracking, evaluation,
+**Implemented:** an installable Python package, version/help commands, CPU-only
+file-manifest creation/verification, declared sequence/split integrity checks,
+software tests, and CI for Windows and Linux. The
+[dataset review](docs/data-selection.md) compares ROAD-Waymo, TUMTraf-A,
+TrafficMOT, ROAD, KITTI, SVMOT and BDD100K using the same criteria.
+
+**Not implemented:** dataset-specific acquisition/preparation, inference, tracking, evaluation,
 events, multimodal explanations, an API, or a public demo. No model or dataset
-has been selected. No accuracy or performance results are available.
+has been accepted. No real development subset or frozen real-file manifest
+exists. SVMOT's split/scene metadata was retrieved and checksummed; its media
+and object annotations were not obtained. No accuracy or performance results
+are available. Phase 1 is **not complete**.
+
+[Local verification evidence](docs/phase1-evidence.json) records the 20 passing
+CPU tests, clean installed-wheel checks, build environment, tested source
+hashes and verified SVMOT metadata hashes. These are software/metadata checks,
+not detection or tracking benchmarks.
 
 ## Development setup
 
@@ -42,8 +55,27 @@ python -m pip check
 ```
 
 These checks require no GPU, model weights, or datasets. Installation downloads
-build tooling; the package has no runtime dependencies. The CLI currently only
-reports version and help information.
+build tooling; the package has no runtime dependencies. Artificial byte
+fixtures test integrity contracts only, not empirical video performance.
+
+## Data integrity tools
+
+After obtaining and reviewing an official real dataset, explicitly declare
+local frame sequences in a selection JSON. The
+[preparation instructions](docs/data-preparation.md) define its schema,
+official acquisition routes, commands and remaining acceptance gates.
+
+```sh
+python -m tracevision data manifest --help
+python -m tracevision data verify --help
+```
+
+Manifests record source/release/terms metadata, exact selected splits and
+relative file paths, byte sizes and SHA-256 hashes. Verification detects
+missing/changed files, declared group leakage, copied frame bytes across splits
+and invalid declared continuity. It does not decode media, parse object ground
+truth, establish licensing permission, or prove every form of leakage absent.
+No third-party data is distributed with the project.
 
 ## Engineering direction
 
@@ -52,10 +84,10 @@ failure analysis → events → evidence-grounded explanations. Model libraries
 will sit behind project-owned interfaces. This architecture is not yet
 implemented; see [engineering decisions](docs/engineering.md).
 
-The next milestone is dataset selection and a verifiable preparation pipeline.
-It will compare established public road-scene sources for licensing,
-annotations, storage, and free-compute feasibility before selecting a fixed
-development subset. Detection and GPU execution follow that milestone.
+The next milestone is to unblock official acquisition, validate actual media
+and identity annotations, implement one dataset adapter and freeze a small
+real development subset. Detection and GPU execution follow that milestone;
+see the [Phase 2 prerequisites](docs/data-preparation.md#reproduction-workspace-and-phase-2-gate).
 
 Later milestones cover tracking evaluation, failure inspection, tested event
 rules, grounded multimodal evaluation, backend interfaces, benchmarks, and a
